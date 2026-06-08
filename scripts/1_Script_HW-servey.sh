@@ -37,8 +37,14 @@ VIDEO=$(MODEL=$(lshw -C video | grep product | awk 'NR==1 { $1=""; print }')
         MAKE=$(lshw -C video | grep vendor | awk 'NR==1 { $1=""; print }') 
         echo $MAKE $MODEL)
 
+# This gets the host ip address connected to the default gateway and puts it into the HOST_ADDR varaible to be printed in the report
+HOST_ADDR=$(ip route | grep default | awk '{print $9}')
+
+# this gets the default gateway ip address and places it into the DEFAULT_GATE variable to be printed in the report
+DEFAULT_GATE=$(ip route | grep default | awk '{print $3}')
+
 #
-HOST_ADDR=$()
+
 
 # This is just a clear to make sure that this is the only thing on screen
 clear
@@ -54,8 +60,8 @@ CPU: $CPU_INFO
 RAM: $RAM_SIZE
 Disk(s): $DISKS
 Video: $VIDEO
-Host Address: IP ADDRESS FOR THE INTERFACE THAT IS CONNECTED TO THE DEFAULT GATEWAY
-Gateway IP: DEFAULT GATEWAY ADDRESS
+Host Address: $HOST_ADDR
+Gateway IP: $DEFAULT_GATE
 DNS Server: IP OF DNS SERVER
 
 System Status
