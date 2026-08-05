@@ -10,7 +10,7 @@ fi
 scp configure-host.sh remoteadmin@server1-mgmt:/root
 
 if [ $? -eq 0 ]; then
-	ssh remoteadmin@server1-mgmt -- /root/configure-host.sh -name loghost -ip 192.168.16.3 -hostentry webhost 192.168.16.4 $verbose_opt >2 /dev/null
+	ssh remoteadmin@server1-mgmt -- /root/configure-host.sh -name loghost -ip 192.168.16.3 -hostentry webhost 192.168.16.4 $verbose_opt
 	if [ $? -ne 0 ]; then
 		echo "failed to run configure-host.sh on server 1"
 		exit 1
