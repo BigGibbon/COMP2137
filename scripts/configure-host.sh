@@ -95,6 +95,7 @@ if [[ "$ip" != "NA_d" && "$ip_flag" == "true" ]]; then
 			echo "ip updated in $netplan_path"
 		fi
 		logger "ip updated in $netplan_path from $current_ip to $ip"
+	fi
 
 	if [[ "$current_ip" != "$ip" ]]; then
 		sed -i "s/$current_ip/$ip/g" "/etc/hosts"
